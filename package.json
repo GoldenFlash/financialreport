@@ -1,0 +1,56 @@
+{
+  "name": "financialreport",
+  "productName": "financialreport",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": ".webpack/main",
+  "scripts": {
+    "dev": "concurrently \" npm run start:render \" \"wait-on http://localhost:3000 && npm run start:main\"",
+    "start:render": "cross-env BROWSER=none react-scripts start",
+    "build:render": "react-scripts build",
+    "test:render": "react-scripts test",
+    "eject:render": "react-scripts eject",
+    "start:main": "electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "wei wang",
+    "email": "wangwei@broada.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron-forge/plugin-webpack": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "@vercel/webpack-asset-relocator-loader": "^1.7.3",
+    "css-loader": "^6.11.0",
+    "node-loader": "^2.1.0",
+    "style-loader": "^3.3.4",
+    "concurrently": "^5.2.0",
+    "cross-env": "^7.0.2",
+    "electron": "^24.1.2",
+    "wait-on": "^5.1.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  }
+}
