@@ -1,6 +1,9 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 const isDev = require("electron-is-dev")
+
+const fs = require('fs');
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -49,6 +52,19 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+
+ipcMain.handle('get-folder-files', async (event, folderPath) => {
+  const directoryPath = path.join(__dirname, '../assets');  // 替换为你的文件夹路径
+
+  try {
+    const files = await fs.promises.readdir(directoryPath);
+    return files;  // 返回结果
+  } catch (error) {
+    console.error('读取文件夹失败:', error);
+    throw new Error('无法读取文件夹');
   }
 });
 
